@@ -1,19 +1,40 @@
-<p id="notice"><%= notice %></p>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title><%= @listing.title %></title>
+  <%= stylesheet_link_tag 'application', media: 'all' %>
+</head>
+<body>
+  <div id="topbar">
+    <div id="breadcrumbs">
+      <a href="/">CL</a> &gt;
+      <a href="#">Some, CT</a> &gt;
+      <a href="#">some/region</a> &gt;
+      <a href="#">all things like this thing</a> &gt;    
+      <a href="#">this thing specifically</a>
+      <span class="accountlink">[ <a href="#">account</a> ]</span>
+      <br>
+    </div>
+  </div>
+  <section id="body">
+    <button>reply</button>
+    <span id="flag">flag</span>
+    <a href = "#">prohibited</a>
+    <span class="posted">Posted: <%= @listing.created_at %></span>
+    <br>
+    <h1><%= @listing.title %></h1>
+    <br>
+    <div id="postingbody"><%= @listing.body %></div>
+    <br>
+    <li class="nocontact">do NOT contact me with unsolicited services or offers</li>
+    <br>
+    <br>
+    <span class="postinginfo">post id: 123456789</span>
+  </section>
 
-<p>
-  <strong>Title:</strong>
-  <%= @listing.title %>
-</p>
-
-<p>
-  <strong>Body:</strong>
-  <%= @listing.body %>
-</p>
-
-<p>
-  <strong>Category:</strong>
-  <%= @listing.category %>
-</p>
 
 <%= link_to 'Edit', edit_listing_path(@listing) %> |
-<%= link_to 'Back', listings_path %>
+<%= link_to 'Back', '/' %>
+<%= javascript_include_tag 'application' %>
+</body>

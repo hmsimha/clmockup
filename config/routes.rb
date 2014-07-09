@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   resources :listings
+  root to: 'static_pages#home'
+  get '/:category/', to: 'static_pages#category'    
+  get '/:category/:id', to: 'listings#show'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Etc</title>
+  <style>
+    html, body {
+      margin:0;
+      height: 100%;
+      width: 100%;
+    }
+
+    #container {
+      margin: 0 auto;
+      display: inline-block;
+      position:relative;
+    }
+    a>div {
+      text-decoration: none;
+    }
+    a:hover {
+      border-color: yellow;
+      cursor:pointer;
+      text-decoration: underline;
+    }
+    a {
+      font-family: 'Bitstream Vera Serif', 'Times New Roman', serif;
+      font-size: 16px;
+      display: inline-block;
+      text-decoration: none;
+      padding: 7px;
+      
+      position:absolute;
+    }
+    span {
+      background-color: white;
+      border-radius: 8px;
+      border-left: 4px solid white;
+      border-right: 4px solid white;
+    }
+
+    div {
+
+    }
+    #pet1 {
+      top: 35.5%;
+      left: 12.8%;
+    }
+    #pet2 {
+      top: 41.2%;
+      left: 12.8%%;
+    }
+    #cl {
+      left: 170px;
+      top: -3px;
+
+    }
+
+    #cl span {
+      background-color: #EEEEEE;
+      border-color: #EEEEEE;
+      border-radius: 0;
+      padding-right: 4px;
+      padding-bottom:5px;
+      font-family: sans-serif;
+    }
+
+    span:before {
+      content: '\2605\00A0';
+      font-size:1.2em;
+      color: gray;
+      font-weight: 900;
+      text-decoration: none;
+    }
+
+    span.nostar:before {
+      content: '';
+    }
+
+  </style>
+</head>
+<body>
+  <div id="container">
+    <img src="http://i.imgur.com/iSImvdf.png">
+    <a id="cl" href="/"><span class="nostar">CL</span></a>  
+    <a id="pet1" href="456789012"><span><%= Listing.find(456789012).title %></span></a>
+    <a id="pet2" href="456789013"><span><%= Listing.find(456789013).title %></span></a>
+  <!--Looking for someone to write generic listings on Craigslist-->
+  </div>
+  <script>
+    $("img").width($(document).width());
+  </script>
+</body>
+</html> 

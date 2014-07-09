@@ -1,6 +1,33 @@
-<h1>Editing listing</h1>
-
-<%= render 'form' %>
-
+<!doctype html>
+<html lang="en">
+<head>
+  <title>edit craigslist ad</title>
+  <meta charset="utf-8">
+  <style>
+    textarea {
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+<h1><%= @listing.title %></h1>
+  <%= form_for @listing do |f| %>
+    <% if @listing.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@listing.errors.count, "error") %> prohibited this listing from being saved:</h2>
+        <ul>
+        <% @listing.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <div class="field">
+      <%= f.text_area :body, rows: 20 %>
+    </div>
+    <%= f.submit %>
+  <% end %>
 <%= link_to 'Show', @listing %> |
 <%= link_to 'Back', listings_path %>
+</body>
+</html>

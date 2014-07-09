@@ -1,0 +1,45 @@
+body {
+  margin: 0;
+}
+
+#topbar {
+  border-bottom: 1px #ccc solid;
+  background: #eee;
+  padding: 5px 0;
+  margin-bottom: 17px;
+}
+
+#breadcrumbs {
+  font-size: 16px;
+  line-height: 24px;
+  font-family: sans-serif;
+  width: 980px;
+  margin: 0 auto;
+}
+
+.accountlink {
+  float: right;
+}
+
+#body {
+  width: 980px;
+  margin: 0 auto;
+}
+
+body span {
+  margin: 0 50px;
+}
+button {
+  padding: 0 13px;
+}
+
+.nocontact {
+  font-size: .8em;
+  font-family: Arial;
+}
+
+body span.postinginfo {
+  margin: 0;
+  font-size: .75em;
+  font-family: Arial;
+}
