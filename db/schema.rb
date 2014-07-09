@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20140709131641) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "listings", force: true do |t|
     t.string   "title"
     t.text     "body"
@@ -28,6 +31,6 @@ ActiveRecord::Schema.define(version: 20140709131641) do
     t.datetime "updated_at"
   end
 
-  add_index "pictures", ["listing_id"], name: "index_pictures_on_listing_id"
+  add_index "pictures", ["listing_id"], name: "index_pictures_on_listing_id", using: :btree
 
 end
