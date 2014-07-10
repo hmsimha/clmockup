@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Appliances</title>
+  <title><%= @pagetitle %></title>
   <style>
     html, body {
       margin:0;
@@ -83,8 +83,11 @@
   <div id="container">
     <img src="http://i.imgur.com/iSImvdf.png">
     <a id="cl" href="/"><span class="nostar">CL</span></a>  
-    <a class="listing" href="34567890"><span><%= Listing.find(34567890).title %></span></a>
-    <a class="listing" href="34567891"><span><%= Listing.find(34567891).title %></span></a>
+    <a class="listing" href=<%= "/#{@category}/#{@listing1.id}" %>>
+    <span><%= @listing1.title %></span></a>
+    <a class="listing" href=<%= "/#{@category}/#{@listing2.id}" %>>
+    <span><%= @listing2.title %></span></a>
+  <!--Looking for someone to write generic listings on Craigslist-->
   </div>
   <script>
     $("img").width($(document).width());
