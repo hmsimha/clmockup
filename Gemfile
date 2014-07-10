@@ -13,6 +13,6 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
 
 gem 'bundler'
-
+gem 'jquery-rails'
 gem 'tzinfo-data'
 gem 'validates_formatting_of'
