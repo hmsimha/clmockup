@@ -23,18 +23,20 @@
     <a href = "#">prohibited</a>
     <span class="posted">Posted: <%= @listing.created_at %></span>
     <br>
-    <h1><%= @listing.title %></h1>
+    <h2><%= @listing.title %></h2>
     <br>
-    <div id="postingbody"><%= @listing.body.html_safe %></div>
+    <div id="postingbody"><%= sanitize @listing.body, tags: ["br"] %></div>
     <br>
     <li class="nocontact">do NOT contact me with unsolicited services or offers</li>
     <br>
     <br>
     <span class="postinginfo">post id: 123456789</span>
+    <br>
+    <br>
+    <br>
+
+    <%= link_to 'Edit', edit_listing_path(@listing) %> |
+    <%= link_to 'Back', '/'+ @listing.category %>
   </section>
-
-
-<%= link_to 'Edit', edit_listing_path(@listing) %> |
-<%= link_to 'Back', '/' %>
 <%= javascript_include_tag 'application' %>
 </body>

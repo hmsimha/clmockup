@@ -10,6 +10,7 @@ class ListingsController < ActionController::Base
   # GET /listings/1
   # GET /listings/1.json
   def show
+    @listing.body.gsub!("\r\n", "<br>")
   end
 
   # GET /listings/new
@@ -19,6 +20,7 @@ class ListingsController < ActionController::Base
 
   # GET /listings/1/edit
   def edit
+    @listing.body.gsub!(/\s*<br>\s*/, "\r\n")
   end
 
   # POST /listings

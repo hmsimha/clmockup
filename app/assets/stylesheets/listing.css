@@ -26,7 +26,7 @@ body {
   margin: 0 auto;
 }
 
-body span {
+#body>span {
   margin: 0 50px;
 }
 button {
@@ -38,7 +38,7 @@ button {
   font-family: Arial;
 }
 
-body span.postinginfo {
+#body>span.postinginfo {
   margin: 0;
   font-size: .75em;
   font-family: Arial;

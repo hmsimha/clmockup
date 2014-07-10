@@ -4,13 +4,12 @@
   <title>edit craigslist ad</title>
   <meta charset="utf-8">
   <style>
-    textarea {
+    textarea, input[type="text"] {
       width: 100%;
     }
   </style>
 </head>
 <body>
-<h1><%= @listing.title %></h1>
   <%= form_for @listing do |f| %>
     <% if @listing.errors.any? %>
       <div id="error_explanation">
@@ -23,11 +22,13 @@
       </div>
     <% end %>
     <div class="field">
+      <%= f.text_field :title %>
+    </div>
+    <div class="field">
       <%= f.text_area :body, rows: 20 %>
     </div>
     <%= f.submit %>
   <% end %>
-<%= link_to 'Show', @listing %> |
-<%= link_to 'Back', listings_path %>
+<%= link_to 'Show', @listing %>
 </body>
 </html>
