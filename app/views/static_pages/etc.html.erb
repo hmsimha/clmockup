@@ -42,11 +42,11 @@
     div {
 
     }
-    #pet1 {
+    #cl + a {
       top: 35.5%;
       left: 12.8%;
     }
-    #pet2 {
+    a.listing + a {
       top: 41.2%;
       left: 12.8%%;
     }
@@ -83,8 +83,8 @@
   <div id="container">
     <img src="http://i.imgur.com/iSImvdf.png">
     <a id="cl" href="/"><span class="nostar">CL</span></a>  
-    <a id="pet1" href="etc/456789012"><span><%= Listing.find(456789012).title %></span></a>
-    <a id="pet2" href="etc/456789013"><span><%= Listing.find(456789013).title %></span></a>
+    <a class="listing" href="456789012"><span><%= Listing.find(456789012).title %></span></a>
+    <a class="listing" href="456789013"><span><%= Listing.find(456789013).title %></span></a>
   <!--Looking for someone to write generic listings on Craigslist-->
   </div>
   <script>
