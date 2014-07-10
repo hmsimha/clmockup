@@ -25,7 +25,7 @@
     <br>
     <h1><%= @listing.title %></h1>
     <br>
-    <div id="postingbody"><%= @listing.body %></div>
+    <div id="postingbody"><%= @listing.body.html_safe %></div>
     <br>
     <li class="nocontact">do NOT contact me with unsolicited services or offers</li>
     <br>
