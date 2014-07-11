@@ -3,12 +3,69 @@
 <head>
   <meta charset="utf-8">
   <title><%= @listing.title %></title>
+  <%= javascript_include_tag 'application' %>
   <%= stylesheet_link_tag 'application', media: 'all' %>
+  <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css">
+  <style>
+     a.highlight {
+      display: inline-block;
+      text-decoration: none;
+      padding: 2px 5px;
+      border-radius:50%;
+      border: 3px dotted green;
+      margin: -4px 0;
+    }
+
+    a.highlight:hover {
+      border-color: yellow;
+      cursor:pointer;
+    }
+
+    h2:before {
+      content: '\2605\00A0';
+      font-size:.8em;
+      color: gray;
+      font-weight: 900;
+      text-decoration: none;
+    }
+
+    #greydot {
+      font-size: 100px;
+      color: gray;
+      line-height: 10px;
+      position: relative;
+      top: 25px;
+    }
+
+    #greendot {
+      font-size: 100px;
+      color: green;
+      line-height: 10px;
+      position: relative;
+      top: 25px;
+    }
+
+    #reddot {
+      font-size: 100px;
+      color: red;
+      line-height: 10px;
+      position: relative;
+      top: 25px;
+    }
+
+    .ui-widget {
+      font-family: 'Times New Roman'  ;
+    }
+
+    #modal {
+      overflow: hidden;
+    }
+  </style>
 </head>
 <body>
   <div id="topbar">
     <div id="breadcrumbs">
-      <a href="/">CL</a> &gt;
+      <a href="/" class="highlight">CL</a> &gt;
       <a href="#">Some, CT</a> &gt;
       <a href="#">some/region</a> &gt;
       <a href="#">all things like this thing</a> &gt;    
@@ -22,9 +79,10 @@
     <span id="flag">flag</span>
     <a href = "#">prohibited</a>
     <span class="posted">Posted: <%= @listing.created_at %></span>
+    <span class="updated">Updated: <%= @listing.updated_at %></span>
     <br>
     <h2><%= @listing.title %></h2>
-    <br>
+
     <div id="postingbody"><%= sanitize @listing.body, tags: ["br"] %></div>
     <br>
     <li class="nocontact">do NOT contact me with unsolicited services or offers</li>
@@ -34,9 +92,38 @@
     <br>
     <br>
     <br>
-
-    <%= link_to 'Edit', edit_listing_path(@listing) %> |
-    <%= link_to 'Back', '/'+ @listing.category %>
+    <%= link_to 'Edit', edit_listing_path(@listing), class: 'highlight' %> |
+    <%= link_to 'Back', '/'+ @listing.category, class: 'highlight' %> |
+    <%= link_to 'Help', '#', class: 'highlight', onclick: "openModal()" %>
   </section>
-<%= javascript_include_tag 'application', 'listings' %>
+  <div id="modal" title="Craigsdiff demonstration">
+    In the bottom right corner of the page, notice the colored dot. This is the change indicator.<br>
+    A grey dot<span id="greydot">&bull;</span>indicates the listing is not currently being tracked.<br>
+    A green dot<span id="greendot">&bull;</span>indicates the listing is being tracked, and no new changes (since last visit) have been observed<br>
+    A red dot<span id="reddot">&bull;</span>indicates the listing is being tracked, and new changes have been observed. When the dot is red, you may click it to toggle a visual representation of what has changed in the text<br>
+    <br>
+    You can also hover over the change indicator for information on when the listing was tracked and when it was most recently changed.
+    <br>
+    Click the indicator<span id="greydot">&bull;</span>to start tracking, then click 'Edit' to make some changes to the post
+  </div>
+  <%= javascript_include_tag 'gdiff', 'craigsdiff' %>
+  <script>
+    $(function() {
+      $( "#modal" ).dialog({
+        modal: true,
+        buttons: {
+          Ok: function() {
+            $( this ).dialog( "close" );
+          }
+        },
+        width: "75%",
+        autoOpen: !localStorage.getItem('nomodal2'),
+        close: function() {localStorage.setItem('nomodal2', true);},
+        position: {at: "center center-15%"}
+      });
+    });
+    function openModal() {
+      $("#modal").dialog('open');
+    }
+  </script>
 </body>

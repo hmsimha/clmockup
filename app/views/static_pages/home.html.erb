@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <title>Craigslist mockup</title>
   <%= javascript_include_tag 'application' %>
+  <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css">
   <style>
     html, body {
       margin:0;
@@ -16,25 +17,25 @@
       display: inline-block;
       position:relative;
     }
-    a>div {
-      text-decoration: none;
-    }
 
     a:hover {
       border-color: yellow;
       cursor:pointer;
     }
     a {
-      font-family: sans-serif;
-      font-size:.84em;
       display: inline-block;
       text-decoration: none;
       padding: 7px;
       border-radius:40%;
       border: 3px dotted green;
-      position:absolute;
     }
-    span {
+
+    #container a {
+      position:absolute;
+      font-family: sans-serif;
+      font-size:.84em;
+    }
+    #container span {
       background-color: white;
       border-radius: 0;
       border-left: 4px solid white;
@@ -45,7 +46,7 @@
       left:435px;
       top:286px;
     }
-    #appliances   a {border-bottom: 1px solid white;}
+    #appliances a {border-bottom: 1px solid white;}
     #pets {
       left:245px;
       top:158px;
@@ -56,10 +57,20 @@
       top:618px;
     }
 
-    div {
-      display: inline-block;
-      position: absolute;
+    #help {
+      left: 14px;
+      top: 377px;
     }
+
+    #help span {
+      background-color: #F4F4F4;
+      border-color: #F4F4F4;
+    }
+
+    .ui-dialog-titlebar-close {
+      display: none;
+    }
+
 
   </style>
 </head>
@@ -69,6 +80,34 @@
     <a id="pets" href="/pet/"><span>pets</span></a>
     <a id="appliances" href="/ppa/"><span>appliances</span></a>
     <a id="etc" href="/etc/"><span>[ETC]</span></a>
+    <a id="help" href="#" onclick="openModal();"><span>help</span></a>
   </div>
+  <div id="modal" title="Craigsdiff demonstration">
+    This page is a mockup of Craigslist designed to demonstrate the Craigsdiff browser extension, a proof of concept for a library in development that will enable browser extension creators to easily integrate tracking of page content.
+    <br>
+    <br>
+    Click any link with a green outline <a><span>like so</span></a>
+  </div>
+  <script>
+    $(function() {
+      $( "#modal" ).dialog({
+        modal: true,
+        buttons: {
+          Ok: function() {
+            $( this ).dialog( "close" );
+          }
+        },
+        width: "50%",
+        height: "auto",
+        autoOpen: !localStorage.getItem('nomodal'),
+        close: function() {localStorage.setItem('nomodal', true);},
+        position: {at: "center center-15%"}
+      });
+    });
+
+    function openModal() {
+      $("#modal").dialog('open');
+    }
+  </script>
 </body>
 </html> 

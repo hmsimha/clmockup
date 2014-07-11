@@ -14,5 +14,6 @@ gem 'spring',        group: :development
 
 gem 'bundler'
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
 gem 'tzinfo-data'
 gem 'validates_formatting_of'
